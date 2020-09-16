@@ -36,6 +36,9 @@ const build = async () => {
             if (e.code === 'ENOENT') {
                 alreadyBuilt = false;
             }
+            else {
+                throw e;
+            }
         }
     }
     if (alreadyBuilt === false) {
