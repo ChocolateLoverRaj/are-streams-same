@@ -2,9 +2,9 @@
 Check if the contents of two Node.js streams are the same.
 
 ## Installing
-This module does not need any dependencies. [`rollup`](https://www.npmjs.com/package/rollup) is an optional dependency because it can be used to build a commonjs file. If you are using ESModules, then you can install like this:
+This module does not need any dependencies. If you want to 'require' 'are-streams-same', then you will need [`rollup`](https://www.npmjs.com/package/rollup)/
 ```shell
-npm i are-streams-same --no-optional
+npm i are-streams-same
 ```
 
 ## Using
@@ -63,19 +63,23 @@ areStreamsSame(stream1, stream2)
 - Memory Efficient
     - This module is designed to hold as little memory as possible while chunks come from the two streams. When we get data, the two streams are compared right away. The only buffer that is saved is the new parts of the stream that are still waiting for the other stream in order to be compared. If one stream gets ahead of another, it is paused to prevent a big backlog.
 - Lightweight
-    - No dependencies. The only dependency is [`rollup`](https://www.npmjs.com/package/rollup), which is only needed for building if you are using commonjs.
+    - No dependencies. You will need [`rollup`](https://www.npmjs.com/package/rollup) for building if you are using commonjs.
     - Just one file. `index.js` is the only file with logic. `index.d.ts` is a small file for typescript definitions. There is also a file called `build/cjs.cjs` which is to transpile `index.js` into commonjs, to support commonjs. 
 - Typescript Definitions
     - Definitions are in `index.d.ts`.
 
 ## Using with CommonJs
-This module is made with ESModules. ESModules are able to use other ESModules and CommonJs modules, but CommonJS modules aren't able to use ESModules. If you are using, CommonJS (`require('are-streams-same')`), or want to support CommonJS, then you can build a CommonJS file by using the `build/cjs.cjs` file. It is a file that exports an async function which uses [`rollup`](https://www.npmjs.com/package/rollup) to generate the `dist/cjs/index.cjs` file. For example, you might have a setup like this:
+This module is made with ESModules. ESModules are able to use other ESModules and CommonJs modules, but CommonJS modules aren't able to use ESModules. If you are using, CommonJS (`require('are-streams-same')`), or want to support CommonJS, then you can build a CommonJS file by using the `build/cjs.cjs` file. It is a file that exports an async function which uses [`rollup`](https://www.npmjs.com/package/rollup) to generate the `dist/cjs/index.cjs` file. The function takes `rollup` as its argument. For example, you might have a setup like this:
 
 ### build.js
 ```javascript
+const rollup = require('rollup');
 const build = require('are-streams-same/build/cjs.cjs');
 
-build();
+build(rollup)
+    .then(() => {
+        console.log("done building");
+    });
 ```
 
 ### package.json
