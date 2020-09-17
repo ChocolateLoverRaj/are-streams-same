@@ -1,12 +1,15 @@
 {
   "name": "are-streams-same",
-  "version": "1.0.1",
-  "description": "Check if the contents of two Node.js streams are the same.\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[\u001b[\u001b",
+  "version": "1.0.2",
+  "description": "Check if the contents of two Node.js streams are the same.",
   "main": "./dist/cjs/index.cjs",
   "type": "module",
   "exports": {
-    "import": "./index.js",
-    "require": "./dist/cjs/index.cjs"
+    ".": {
+      "import": "./index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./": "./"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,7 +31,5 @@
     "url": "https://github.com/ChocolateLoverRaj/are-streams-same/issues"
   },
   "homepage": "https://github.com/ChocolateLoverRaj/are-streams-same#readme",
-  "optionalDependencies": {
-    "rollup": "^2.26.11"
-  }
+  "optionalDependencies": {}
 }
